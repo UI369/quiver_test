@@ -15,9 +15,11 @@
   176  npm install -save react-hot-toast
   177  npm install
   178  npm start
+  
 ```
 
 Error in firefox console: 
+
 ```Uncaught ReferenceError: Buffer is not defined
     js der.js:6
     factory react refresh:6
