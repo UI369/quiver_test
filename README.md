@@ -15,19 +15,53 @@
   176  npm install -save react-hot-toast
   177  npm install
   178  npm start
-  
+
 ```
 
 Error in firefox console: 
 
-```Uncaught ReferenceError: Buffer is not defined
+```
+Uncaught ReferenceError: Buffer is not defined
     js der.js:6
     factory react refresh:6
     Webpack 31
 der.js:6
     js der.js:6
     factory react refresh:6
-    Webpack 31```
+    Webpack 31
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        fn
+        js
+        factory
+        __webpack_require__
+        <anonymous>
+        <anonymous>
+    
+```
 
 Error in local console: 
 ``` @ ./node_modules/@walletconnect/utils/dist/esm/misc.js 2:0-61 16:25-47
