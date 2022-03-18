@@ -1,15 +1,10 @@
 import { WalletProvider, NetworkConfig } from "@raidguild/quiver";
 
-// If using Authereum provider
-import Authereum from "authereum";
-// If using Portis provider
-import Portis from "@portis/web3";
-// If using Frame provider
-import ethProvider from "eth-provider";
+
 // If using wallet connect
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { IProviderOptions } from "web3modal";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 const SUPPORTED_NETWORKS: NetworkConfig = {
   "0x1": {
@@ -50,26 +45,13 @@ const SUPPORTED_NETWORKS: NetworkConfig = {
 };
 
 const providerOptions: IProviderOptions = {
-  authereum: {
-    package: Authereum,
-  },
-  frame: {
-    package: ethProvider,
-  },
-  portis: {
-    package: Portis,
-    options: {
-      // Get the DAPP ID at https://dashboard.portis.io/
-      id: "YOUR-PORTIS-DAPP-ID",
-    },
-  },
   walletconnect: {
     package: WalletConnectProvider,
     options: {
       rpc: {
-        1: networks["0x1"].rpc,
-        4: networks["0x4"].rpc,
-        1337: networks["0x539"].rpc,
+        1: SUPPORTED_NETWORKS["0x1"].rpc,
+        4: SUPPORTED_NETWORKS["0x4"].rpc,
+        1337: SUPPORTED_NETWORKS["0x539"].rpc,
       },
     },
   },
