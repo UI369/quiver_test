@@ -1,8 +1,17 @@
-import { formatAddress, useWallet } from '@raidguild/quiver'
+import { formatAddress, useWallet, useTokenBalance } from '@raidguild/quiver'
 
 const ConnectWallet = () => {
-  const { connectWallet, isConnecting, isConnected, disconnect, address } =
-    useWallet()
+  const {
+    connectWallet,
+    isConnecting,
+    isConnected,
+    disconnect,
+    address,
+    provider,
+    chainId,
+  } = useWallet()
+  const { balance } = useTokenBalance()
+
   return (
     <>
       {!isConnected && (

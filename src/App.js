@@ -60,7 +60,7 @@ const providerOptions = {
 }
 
 const web3modalOptions = {
-  cacheProvider: false,
+  cacheProvider: true,
   providerOptions,
   theme: 'dark',
 }
