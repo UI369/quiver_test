@@ -1,4 +1,12 @@
-import { formatAddress, useWallet, useTokenBalance } from '@raidguild/quiver'
+import { useState, useEffect } from 'react'
+import {
+  formatAddress,
+  useWallet,
+  useTokenBalance,
+  formatToken,
+} from '@raidguild/quiver'
+
+import { BigNumber } from '@ethersproject/bignumber'
 
 const ConnectWallet = () => {
   const {
@@ -8,9 +16,19 @@ const ConnectWallet = () => {
     disconnect,
     address,
     provider,
-    chainId,
   } = useWallet()
-  const { balance } = useTokenBalance()
+  const [ethBalance, setEthBalance] = useState(BigNumber.from(0))
+
+  useEffect(() => {
+    if (!address) return
+    if (!provider) return
+
+    const getEthBalance = async (address) => {
+      const balance = await provider.getBalance(address) // can also set a custom address
+      setEthBalance(balance)
+    }
+    getEthBalance(address) // can be a custom address
+  }, [provider, address])
 
   return (
     <>
@@ -30,6 +48,7 @@ const ConnectWallet = () => {
         <>
           <h4 style={{ display: 'inline' }}>{formatAddress(address)}</h4>
           <button onClick={() => disconnect()}>Disconnect</button>
+          <p>Here is the balance: {formatToken(ethBalance)}</p>
         </>
       )}
     </>
